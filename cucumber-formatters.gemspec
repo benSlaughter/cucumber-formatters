@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.homepage     = 'http://benslaughter.github.io/cucumber-formatters/'
   spec.version      = '0.0.1'
   spec.version      = "#{spec.version}-#{ENV['TRAVIS_BUILD_NUMBER']}" if ENV['TRAVIS']
-  spec.date         = '12-10-14'
+  spec.date         = '2014-10-14'
   spec.license      = 'MIT'
 
   spec.author       = 'Ben Slaughter'
