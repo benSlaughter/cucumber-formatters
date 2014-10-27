@@ -33,7 +33,7 @@ module Cucumber
         print_summary(features)
       end
 
-      def before_feature(feature)
+      def before_feature(_feature)
         @background_failure = false
       end
 
@@ -41,23 +41,23 @@ module Cucumber
         @feature = "#{keyword}: #{name}"
       end
 
-      def before_background(background)
+      def before_background(_background)
         @in_background = true
       end
 
-      def after_background(background)
+      def after_background(_background)
         @in_background = false
       end
 
-      def background_name(keyword, name, file_colon_line, source_indent)
+      def background_name(keyword, name, *_args)
         @background = "  #{keyword}: #{name}"
       end
 
-      def scenario_name(keyword, name, file_colon_line, source_indent)
+      def scenario_name(keyword, name, *_args)
         @scenario = "  #{keyword}: #{name}"
       end
 
-      def step_name(keyword, step_match, status, source_indent, background, file_colon_line)
+      def step_name(keyword, step_match, *_args)
         @step = "    #{keyword}#{step_match.format_args}"
       end
 
@@ -72,17 +72,16 @@ module Cucumber
       end
 
       def after_table_row(table_row)
-        if table_row.exception
-          @step = "    Row: #{table_row.name}"
-          exception(table_row.exception, table_row.status, 6)
-        end
+        return unless table_row.exception
+        @step = "    Row: #{table_row.name}"
+        exception(table_row.exception, table_row.status, 6)
       end
 
       private
 
       def print_scenario_summary
         @io.puts @feature unless @feature.nil?
-        @io.puts (@scenario ? @scenario : @background)
+        @io.puts @scenario ? @scenario : @background
         @io.puts @step unless @step.nil?
         @io.puts @table_row unless @table_row.nil?
 
