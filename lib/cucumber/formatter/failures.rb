@@ -38,7 +38,8 @@ module Cucumber
       end
 
       def feature_name(keyword, name)
-        @feature = "#{keyword}: #{name}"
+        simple_name = name.split("\n").first
+        @feature = "#{keyword}: #{simple_name}"
       end
 
       def before_background(_background)
@@ -50,11 +51,13 @@ module Cucumber
       end
 
       def background_name(keyword, name, *_args)
-        @background = "  #{keyword}: #{name}"
+        simple_name = name.split("\n").first
+        @background = "  #{keyword}: #{simple_name}"
       end
 
       def scenario_name(keyword, name, *_args)
-        @scenario = "  #{keyword}: #{name}"
+        simple_name = name.split("\n").first
+        @scenario = "  #{keyword}: #{simple_name}"
       end
 
       def step_name(keyword, step_match, *_args)
@@ -73,7 +76,7 @@ module Cucumber
 
       def after_table_row(table_row)
         return unless table_row.exception
-        @step = "    Row: #{table_row.name}"
+        @table_row = "    Row: #{table_row.name}"
         exception(table_row.exception, table_row.status, 6)
       end
 
@@ -85,7 +88,11 @@ module Cucumber
         @io.puts @step unless @step.nil?
         @io.puts @table_row unless @table_row.nil?
 
-        @feature, @background, @scenario, @step = nil, nil, nil, nil
+        @feature = nil
+        @background = nil
+        @scenario = nil
+        @step = nil
+        @table_row = nil
       end
 
       def print_summary(features)
