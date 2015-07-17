@@ -85,7 +85,10 @@ module Cucumber
         @io.puts @step unless @step.nil?
         @io.puts @table_row unless @table_row.nil?
 
-        @feature, @background, @scenario, @step = nil, nil, nil, nil
+        @feature = nil
+        @background = nil
+        @scenario = nil
+        @step = nil
       end
 
       def print_summary(features)

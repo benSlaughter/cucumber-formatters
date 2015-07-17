@@ -48,11 +48,13 @@ module Cucumber
 
       def background_name(keyword, name, *_args)
         @background = "  #{keyword}: #{name}"
+        @io.puts @background
+        @io.flush
       end
 
       def scenario_name(keyword, name, file_colon_line, _source_indent)
         @scenario = "  #{keyword}: #{name}"
-        @io.puts "#{@scenario}" + yellow("\t\t#{file_colon_line}")
+        @io.puts "#{@scenario}".ljust(75) + yellow(" #{file_colon_line}")
         @io.flush
       end
 

@@ -1,6 +1,9 @@
 require 'rubygems'
+require 'rubocop/rake_task'
 require 'rspec/core/rake_task'
 require 'yard'
+
+RuboCop::RakeTask.new
 
 desc "Run all examples"
 RSpec::Core::RakeTask.new(:spec) do |t|
@@ -14,4 +17,4 @@ YARD::Rake::YardocTask.new do |t|
   #t.options = ['--list-undoc'] # optional
 end
 
-task :default => [:spec]
+task :default => [:rubocop, :spec]
