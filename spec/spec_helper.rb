@@ -4,4 +4,4 @@ require 'coveralls'
 Coveralls.wear!
 CodeClimate::TestReporter.start
 
-require 'cucumber-formatters'
+require 'cucumber/formatters'

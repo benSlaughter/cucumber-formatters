@@ -11,7 +11,7 @@ module Cucumber
 
       def initialize(runtime, path_or_io, options)
         @runtime = runtime
-        @io      = ensure_io(path_or_io, 'simplecsv')
+        @io      = ensure_io(path_or_io)
         @options = options
       end
 

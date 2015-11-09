@@ -14,7 +14,7 @@ module Cucumber
 
       def initialize(runtime, path_or_io, options)
         @runtime = runtime
-        @io      = ensure_io(path_or_io, 'simpledoc')
+        @io      = ensure_io(path_or_io)
         @options = options
       end
 
@@ -74,7 +74,8 @@ module Cucumber
 
       def after_table_row(table_row)
         return unless table_row.exception
-        @step = "    Row: #{table_row.name}"
+        @table_row = table_row
+        @step      = "    Row: #{table_row.name}"
         exception(table_row.exception, table_row.status, 6)
       end
 
