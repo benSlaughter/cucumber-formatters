@@ -54,7 +54,7 @@ module Cucumber
 
       def scenario_name(keyword, name, file_colon_line, _source_indent)
         @scenario = "  #{keyword}: #{name}"
-        @io.puts "#{@scenario}".ljust(75) + yellow(" #{file_colon_line}")
+        @io.puts @scenario.to_s.ljust(75) + yellow(" #{file_colon_line}")
         @io.flush
       end
 
