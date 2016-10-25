@@ -1,4 +1,5 @@
 require 'cucumber/formatter/failures'
+require 'cucumber/formatter/rerun_dump'
 require 'cucumber/formatter/simplecsv'
 require 'cucumber/formatter/simpledoc'
 require 'cucumber/cli/main'
@@ -8,6 +9,11 @@ require 'cucumber/cli/main'
 Cucumber::Cli::Options::BUILTIN_FORMATS['failures'] = [
   'Cucumber::Formatter::Failures',
   'Outputs scenario information and stack trace when a test fails'
+]
+
+Cucumber::Cli::Options::BUILTIN_FORMATS['rerundump'] = [
+  'Cucumber::Formatter::RerunDump',
+  'Outputs scenario file and line number on new lines. For use with --dry-run'
 ]
 
 Cucumber::Cli::Options::BUILTIN_FORMATS['simpledoc'] = [
