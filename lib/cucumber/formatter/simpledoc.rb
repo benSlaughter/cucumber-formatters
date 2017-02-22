@@ -54,7 +54,7 @@ module Cucumber
 
       def scenario_name(keyword, name, file_colon_line, _source_indent)
         @scenario = "  #{keyword}: #{name}"
-        @io.puts "#{@scenario}".ljust(75) + yellow(" #{file_colon_line}")
+        @io.puts @scenario.to_s.ljust(75) + yellow(" #{file_colon_line}")
         @io.flush
       end
 
@@ -74,7 +74,8 @@ module Cucumber
 
       def after_table_row(table_row)
         return unless table_row.exception
-        @step = "    Row: #{table_row.name}"
+        @table_row = table_row
+        @step      = "    Row: #{table_row.name}"
         exception(table_row.exception, table_row.status, 6)
       end
 

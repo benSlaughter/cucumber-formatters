@@ -5,6 +5,3 @@ AllCops:
   Exclude:
     - '*.gemspec'
     - 'Rakefile'
-
-Style/FileName:
-  Enabled: false

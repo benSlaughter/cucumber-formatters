@@ -21,6 +21,13 @@ module Cucumber
         @runtime = runtime
         @io      = ensure_io(path_or_io, 'failures')
         @options = options
+        @exceptions = []
+        @indent = 0
+        @prefixes = options[:prefixes] || {}
+        @delayed_messages = []
+        @previous_step_keyword = nil
+        @snippets_input = []
+        @output = []
       end
 
       def before_features(_features)
@@ -78,6 +85,10 @@ module Cucumber
         return unless table_row.exception
         @table_row = "    Row: #{table_row.name}"
         exception(table_row.exception, table_row.status, 6)
+      end
+
+      def after_test_step(test_step, result)
+        collect_snippet_data(test_step, result)
       end
 
       private

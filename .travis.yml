@@ -1,15 +1,21 @@
 language: ruby
+
+before_install:
+  - gem install bundler
+
 rvm:
 - ruby-head
+- 2.2.0
 - 2.1.0
 - 2.0.0
+
 matrix:
   allow_failures:
   - rvm: ruby-head
+
 deploy:
   provider: rubygems
-  api_key:
-    secure: PLHZ+N2quWfUJgMR0Ckt/w51KW1GYruC9Ebo6hGs9rx1tLQqMSAkhRIj1YRzU/KacWqUEwCw8onHswBowzf2H3enWlYvyQ8jcLWuZCpATAukOHP5SnmUqV8EqIqD9A0cX1vemU/7Eg2HQ1aq3bnNbqhZWs2JeTw7NsguPjoWikI=
+  api_key: fiKXHUUOOdF274HyeKnbNPD3x/CWSXQInppgk0lXuj/JSKexrG2Vl6nQZZf2Alurd/diadexTrOx21fvhgVYrSY5D0qQclmissTYjwSF6v0VhEsa8sG8uCSa4QEj67dECjpiA+GEdNhCTwjQetuxaiEZPPm8U4LWlSAxEVL3dUo=
   gem: cucumber-formatters
   on:
     repo: benSlaughter/cucumber-formatters

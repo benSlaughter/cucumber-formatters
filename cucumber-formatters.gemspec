@@ -6,9 +6,9 @@ Gem::Specification.new do |spec|
   spec.summary      = 'A helpful bunch of formatters'
   spec.description  = 'A collection of cucumber formatters'
   spec.homepage     = 'http://benslaughter.github.io/cucumber-formatters/'
-  spec.version      = '0.0.5'
+  spec.version      = '0.1.0'
   spec.version      = "#{spec.version}-#{ENV['TRAVIS_BUILD_NUMBER']}" if ENV['TRAVIS']
-  spec.date         = '2015-07-17'
+  spec.date         = '2017-02-22'
   spec.license      = 'MIT'
 
   spec.author       = 'Ben Slaughter'
@@ -26,6 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.4'
   spec.add_development_dependency 'rubocop', '~> 0.32'
 
-  spec.add_runtime_dependency 'cucumber', '~> 2.0'
+  spec.add_runtime_dependency 'cucumber', '= 2.0.0'
   spec.add_runtime_dependency 'term-ansicolor', '~> 1.3'
 end
